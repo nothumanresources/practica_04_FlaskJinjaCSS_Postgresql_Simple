@@ -59,30 +59,27 @@ def f_agregar_registro(
             limite_credito,
             observaciones
         )
-        VALUES
-        (
-            %s, %s, %s, %s, %s, %s, %s,
-            %s, %s, %s, %s, %s, %s, %s
-        )
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
-    valores = (
-        nombre,
-        apellido_paterno,
-        apellido_materno,
-        fecha_nacimiento,
-        genero,
-        correo,
-        telefono,
-        estado,
-        ciudad,
-        codigo_postal,
-        tipo_cliente,
-        intereses,
-        limite_credito,
-        observaciones
-    )
 
-    cursor.execute(sql, valores)
+    cursor.execute(sql,
+        (
+            nombre,
+            apellido_paterno,
+            apellido_materno,
+            fecha_nacimiento,
+            genero,
+            correo,
+            telefono,
+            estado,
+            ciudad,
+            codigo_postal,
+            tipo_cliente,
+            intereses,
+            limite_credito,
+            observaciones
+        )
+    )
     conexion.commit()
     cursor.close()
     conexion.close()
