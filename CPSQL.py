@@ -42,55 +42,52 @@ def f_agregar_registro(
     cursor = conexion.cursor()
 
     try:
+        sql = """
+            INSERT INTO clientes
+            (
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                fecha_nacimiento,
+                genero,
+                correo,
+                telefono,
+                estado,
+                ciudad,
+                codigo_postal,
+                tipo_cliente,
+                intereses,
+                limite_credito,
+                observaciones
+            )
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+        """
 
-    sql = """
-        INSERT INTO clientes
-        (
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            fecha_nacimiento,
-            genero,
-            correo,
-            telefono,
-            estado,
-            ciudad,
-            codigo_postal,
-            tipo_cliente,
-            intereses,
-            limite_credito,
-            observaciones
+        cursor.execute(sql,
+            (
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                fecha_nacimiento,
+                genero,
+                correo,
+                telefono,
+                estado,
+                ciudad,
+                codigo_postal,
+                tipo_cliente,
+                intereses,
+                limite_credito,
+                observaciones
+            )
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
-    """
-
-    cursor.execute(sql,
-        (
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            fecha_nacimiento,
-            genero,
-            correo,
-            telefono,
-            estado,
-            ciudad,
-            codigo_postal,
-            tipo_cliente,
-            intereses,
-            limite_credito,
-            observaciones
-        )
-    )
-    conexion.commit()
-
+        conexion.commit()
     except Exception as error;
-    conexion.rollback()
-    raise error
-
+        conexion.rollback()
+        raise error
     finally:
-    cursor.close()
-    conexion.close()
+        cursor.close()
+        conexion.close()
 
 # ===============
 # LISTAR CLIENTES
