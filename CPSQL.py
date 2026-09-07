@@ -41,6 +41,8 @@ def f_agregar_registro(
     conexion = f_conectar()
     cursor = conexion.cursor()
 
+    try:
+
     sql = """
         INSERT INTO clientes
         (
@@ -81,6 +83,12 @@ def f_agregar_registro(
         )
     )
     conexion.commit()
+
+    except Exception as error;
+    conexion.rollback()
+    raise error
+
+    finally:
     cursor.close()
     conexion.close()
 
