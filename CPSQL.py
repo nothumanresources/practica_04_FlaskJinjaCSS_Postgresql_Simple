@@ -82,7 +82,7 @@ def f_agregar_registro(
             )
         )
         conexion.commit()
-    except Exception as error;
+    except Exception as error:
         conexion.rollback()
         raise error
     finally:
