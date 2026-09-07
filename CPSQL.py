@@ -59,7 +59,7 @@ def f_agregar_registro(
             limite_credito,
             observaciones
         )
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
     """
 
     cursor.execute(sql,
@@ -111,7 +111,7 @@ def f_listar_clientes():
             limite_credito,
             observaciones
         FROM clientes
-        ORDER BY id_cliente
+        ORDER BY id_cliente;
     """
     cursor.execute(sql)
 
